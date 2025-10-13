@@ -3,8 +3,10 @@ from tkinter import ttk
 import random
 from Load_images import SpriteManager
 from uninformedsearch import BFS, DFS, UCS, IDS
-from informed_search import A_star, greedy_search
-from  local_search import LocalSearch
+from informedsearch import A_star, greedy_search
+from localsearch import hill_climbing, genetic_algorithm, simulated_annealing, beam_search
+from cspsearch import Backtracking, Forward_Checking, AC3
+from complexenv import and_or_tree_search, partially_observable_search, belief_state_search
 
 cell_size = 20
 col, row = 42, 19
@@ -179,7 +181,7 @@ class SnakeGame:
         self.window.bind('<Escape>', self.quit_game)
         self.window.bind('<r>', self.restart_game)
         self.window.focus_set()
-
+        
     def init_ui(self):
         self.draw_background(self.canvas_snake)
         self.draw_background(self.canvas_search)
@@ -196,11 +198,11 @@ class SnakeGame:
             self.frame_algorithm.grid_rowconfigure(i, weight=0)
 
         algo_groups = {
-            "Uninformed search": ["BFS", "DFS", "UCS", "IDS"],  # THÊM IDS VÀO DANH SÁCH
+            "Uninformed search": ["BFS", "DFS", "UCS", "IDS"], 
             "Informed search": ["A*", "Greedy"],
-            "Local search": ["Hill Climbing", "Simulated Annealing"],
-            "Complex Environment": ["AND-OR Tree Search", "Partially Observable Search"],
-            "CSP Search": ["Backtracking", "Forward Checking"]
+            "Local search": ["Hill Climbing", "Simulated Annealing", "Genetic Algorithm", "Beam Search"],
+            "Complex Environment": ["AND-OR Tree Search", "Partially Observable Search", "Belief State Search"],
+            "CSP Search": ["Backtracking", "Forward Checking", "AC3"]
         }
         positions = {
             "Uninformed search": (0, 0),
@@ -216,10 +218,8 @@ class SnakeGame:
             for algo in algos:
                 tk.Radiobutton(frame, text=algo, variable=self.algo_variable, value=algo,
                                command=self.on_algorithm_change).pack(anchor="w")
-
     def on_algorithm_change(self):
         if not self.paused and not self.game_over and hasattr(self, 'snake') and len(self.snake) > 0:
-            # Khi đổi thuật toán, dừng đường đi hiện tại và chạy lại
             self.following_path = False
             self.current_path = []
             self.run_algorithm()
@@ -377,7 +377,7 @@ class SnakeGame:
         if not self.paused and not self.game_over and hasattr(self, 'snake') and len(self.snake) > 0:
             self.generate_obstacles()
             self.generate_food()
-            self.following_path = False  # Dừng đường đi hiện tại
+            self.following_path = False
             self.current_path = []
             self.run_algorithm()
 
@@ -394,14 +394,12 @@ class SnakeGame:
                     "current_move": "Current move",
                     "status": "Status"
                 }.get(key, key.replace("_", " ").title())
-
-                # Xử lý đặc biệt cho food position - hiển thị tất cả thức ăn
                 if key == "food":
-                    if value == "None" or not value:  # Không có thức ăn
+                    if value == "None" or not value: 
                         food_text = "None"
-                    elif isinstance(value, list) and len(value) > 0:  # Có nhiều thức ăn
+                    elif isinstance(value, list) and len(value) > 0:
                         food_text = ", ".join(str(pos) for pos in value)
-                    else:  # Có 1 thức ăn
+                    else:
                         food_text = str(value)
                     self.table_gameinfo.item(self.gameinfo_items[key], values=(display_key, food_text))
                 else:
@@ -445,23 +443,12 @@ class SnakeGame:
 
     # -------------------- ALGORITHM EXECUTION ---------------------------
     def run_algorithm(self):
-        """Chạy thuật toán và bắt đầu visualization"""
+        """Chạy thuật toán"""
         algorithm_name = self.algo_variable.get()
 
         result = self.run_real_algorithm(algorithm_name)
 
         if result:
-            # self.update_algoinfo(
-            #     algorithm=algorithm_name,
-            #     nodes=result["nodes_expanded"],
-            #     frontier=result["max_frontier_size"],
-            #     pathlen=len(result["found_path"]) if result["found_path"] else 0,
-            #     time=result["time"],
-            #     path=result["found_path"],
-            #     heuristic=0,
-            #     distance_cost=len(result["found_path"]) if result["found_path"] else 0,
-            #     total_cost=len(result["found_path"]) if result["found_path"] else 0
-            # )
             self.update_algoinfo(
                 algorithm=algorithm_name,
                 nodes=result["nodes_expanded"],
@@ -469,7 +456,7 @@ class SnakeGame:
                 pathlen=len(result["found_path"]) if result["found_path"] else 0,
                 time=result["time"],
                 path=result["found_path"],
-                heuristic=result.get("heuristic_value", 0),  # NEW ĐỂ HIỂN THỊ H(X) CỦA A*
+                heuristic=result.get("heuristic_value", 0),
                 distance_cost=result.get("distance_cost", 0),
                 total_cost=result.get("total_cost", 0)
             )
@@ -499,34 +486,42 @@ class SnakeGame:
                 return DFS(self.snake, self.obstacles, self.food, row, col)
             elif algorithm_name == "UCS":
                 return UCS(self.snake, self.obstacles, self.food, row, col)
-            elif algorithm_name == "IDS":  # THÊM XỬ LÝ CHO IDS
+            elif algorithm_name == "IDS":  
                 return IDS(self.snake, self.obstacles, self.food, row, col)
             elif algorithm_name == "A*":
                 return A_star(self.snake, self.obstacles, self.food, row, col)
             elif algorithm_name == "Greedy":
                 return greedy_search(self.snake, self.obstacles, self.food, row, col)
             elif algorithm_name == "Hill Climbing":
-                ls = LocalSearch(self.snake, self.obstacles, self.food, row, col)
-                return ls.hill_climbing()
+                return hill_climbing(self.snake, self.obstacles, self.food, row, col) 
             elif algorithm_name == "Simulated Annealing":
-                ls = LocalSearch(self.snake, self.obstacles, self.food, row, col)
-                return ls.simulated_annealing()
+                return simulated_annealing(self.snake, self.obstacles, self.food, row, col)
             elif algorithm_name == "Genetic Algorithm":
-                ls = LocalSearch(self.snake, self.obstacles, self.food, row, col)
-                return ls.genetic_algorithm()
-            else:
-                return BFS(self.snake, self.obstacles, self.food, row, col)
+                return genetic_algorithm(self.snake, self.obstacles, self.food, row, col)
+            elif algorithm_name == "Backtracking":
+                return Backtracking(self.snake, self.obstacles, self.food, row, col)
+            elif algorithm_name == "Forward Checking":
+                return Forward_Checking(self.snake, self.obstacles, self.food, row, col)
+            elif algorithm_name == "AC3":
+                return AC3(self.snake, self.obstacles, self.food, row, col)
+            elif algorithm_name == "AND-OR Tree Search":
+                return and_or_tree_search(self.snake, self.obstacles, self.food, row, col)
+            elif algorithm_name == "Partially Observable Search":
+                return partially_observable_search(self.snake, self.obstacles, self.food, row, col)
+            elif algorithm_name == "Belief State Search":
+                return belief_state_search(self.snake, self.obstacles, self.food, row, col)
+            elif algorithm_name == "Beam Search":
+                return beam_search(self.snake, self.obstacles, self.food, row, col)
         except Exception as e:
             print(f"Error running algorithm {algorithm_name}: {e}")
             return {
-                "nodes_expanded": 0,
+                "nodes_expanded": 0, 
                 "max_frontier_size": 0,
                 "time": 0,
                 "found_directions": None,
-                "found_path": None,
+                "found_path": None, 
                 "expanded_nodes": []
             }
-
     # -------------------- SEARCH VISUALIZATION ---------------------------
     def perform_search_visualization(self):
         """Thực hiện visualization"""
@@ -576,11 +571,11 @@ class SnakeGame:
     def draw_search_node(self, node, node_type):
         x, y = node
         colors = {
-            "expanded": "#FFD700",
-            "path": "#FF4500"
+            "expanded": "#FFF",
+            "path": "#FF4500"   
         }
         outline_colors = {
-            "expanded": "#FF8C00",
+            "expanded": "#808080",
             "path": "#B22222"
         }
 
@@ -620,32 +615,85 @@ class SnakeGame:
             self.obstacles = self.obstacle_hard
         else:
             self.obstacles = []
+        
         self.canvas_snake.delete("obstacle")
+        
+        block_sprite = self.sprite_manager.get_sprite('wall_block_0')
+        
         for x, y in self.obstacles:
-            self.canvas_snake.create_rectangle(
-                y * cell_size, x * cell_size,
-                (y + 1) * cell_size, (x + 1) * cell_size,
-                fill="#f04305",
-                outline="",
+            self.canvas_snake.create_image(
+                y * cell_size + cell_size // 2,
+                x * cell_size + cell_size // 2,
+                image=block_sprite,
                 tags="obstacle"
             )
 
     def generate_food(self):
-        """Chỉ sinh 1 food cho tất cả độ khó"""
-        # Luôn chỉ tạo 1 food duy nhất
+        """Sinh thức ăn: bình thường toàn bản đồ, riêng CSP thì gần đầu rắn"""
         self.food = []
 
-        while True:
-            x = random.randrange(row)
-            y = random.randrange(col)
-            if (x, y) not in self.snake and (x, y) not in self.obstacles:
-                self.food.append((x, y))
-                break
+        # Lấy thuật toán hiện tại
+        algo = self.algo_variable.get()
+        head_x, head_y = self.snake[0]
 
-        # Lưu số lượng food ban đầu
+        if algo in ["Backtracking", "Forward Checking", "AC3", "Simulated Annealing","Hill Climbing","Genetic Algorithm", "IDS", "Partially Observable Search", "Belief State Search"]:
+            if algo == "Backtracking":
+                radius = 10
+            elif algo == "Forward Checking":
+                radius = 5  
+            elif algo == "AC3":
+                radius = 4
+            elif algo == "Simulated Annealing":
+                radius = 3 
+            elif algo == "Hill Climbing":
+                radius = 5
+            elif algo == "Genetic Algorithm":
+                radius = 5
+            elif algo == "IDS":
+                radius = 5
+            elif algo == "Partially Observable Search":
+                radius = 5
+            elif algo == "Belief State Search":
+                radius = 5
+            else:
+                radius = 3
+
+            attempts = 0
+            while True:
+                # Sinh trong khung vuông quanh đầu rắn
+                x = random.randint(max(0, head_x - radius), min(row - 1, head_x + radius))
+                y = random.randint(max(0, head_y - radius), min(col - 1, head_y + radius))
+                attempts += 1
+
+                # Nếu hợp lệ thì dùng
+                if (x, y) not in self.snake and (x, y) not in self.obstacles:
+                    self.food.append((x, y))
+                    break
+
+                # Phòng khi kẹt (vùng gần đầy)
+                if attempts > 100:
+                    # fallback: random toàn bản đồ
+                    while True:
+                        x = random.randrange(row)
+                        y = random.randrange(col)
+                        if (x, y) not in self.snake and (x, y) not in self.obstacles:
+                            self.food.append((x, y))
+                            break
+                    break
+        else:
+            # Các thuật toán khác: sinh toàn bản đồ
+            while True:
+                x = random.randrange(row)
+                y = random.randrange(col)
+                if (x, y) not in self.snake and (x, y) not in self.obstacles:
+                    self.food.append((x, y))
+                    break
+
+        # Lưu lại số lượng food
         self.initial_food_count = len(self.food)
         self.food_remaining = self.initial_food_count
 
+        # Vẽ lại food
         self.canvas_snake.delete("food")
         food_sprite = self.sprite_manager.get_sprite('food')
         for x, y in self.food:
@@ -655,6 +703,7 @@ class SnakeGame:
                 image=food_sprite,
                 tags="food"
             )
+
 
     def start_game(self):
         if getattr(self, "after_id", None):
@@ -779,7 +828,7 @@ class SnakeGame:
             # Đã đi hết đường đi, chạy thuật toán mới
             self.following_path = False
             self.run_algorithm()
-            return
+        
 
         # Lấy hướng đi tiếp theo từ đường đi
         self.next_direction = self.current_path[self.current_path_index]
@@ -859,6 +908,21 @@ class SnakeGame:
             self.just_ate_food = True
             # Cập nhật thông tin thức ăn sau khi ăn
             self.update_info()
+    def _sa_current_temperature(self):
+        """Tính 'nhiệt độ' cho SA: khoảng cách Manhattan chuẩn hoá 0–10."""
+        if not self.food or not self.snake:
+            return None
+        head = self.snake[0]
+        food = self.food[0]
+        distance = abs(head[0] - food[0]) + abs(head[1] - food[1])
+        # row/col là biến global trong file (col, row = 42, 19)
+        max_dist = max(row, col)
+        if max_dist <= 0:
+            return None
+        temp = (distance / max_dist) * 10.0
+        # giới hạn 0..10 cho đẹp UI
+        temp = max(0.0, min(10.0, temp))
+        return round(temp, 2)
 
     def update_info(self):
         self.update_gameinfo(
@@ -878,6 +942,12 @@ class SnakeGame:
             space_efficiency=self.calculate_space_efficiency(),
             movement_efficiency=self.calculate_movement_efficiency()
         )
+            # --- chỉ cập nhật h(x) theo 'nhiệt độ' khi đang chọn SA ---
+        if self.algo_variable.get() == "Simulated Annealing":
+            temp = self._sa_current_temperature()
+            if temp is not None:
+                # Chỉ override cột h(x) cho SA
+                self.update_algoinfo(heuristic=temp)
 
     def direction_to_text(self, direction):
         mapping = {
@@ -983,7 +1053,6 @@ class SnakeGame:
             justify="center",
             tags="game_over"
         )
-
 
 # ------------------ MAIN ------------------------------
 if __name__ == "__main__":

@@ -153,7 +153,6 @@ def greedy_search(snake, obstacles, food, rows, cols):
     nodes_expanded = 0
     max_frontier = 1
 
-    # THÊM: Theo dõi chi phí thực tế g(x)
     g_cost_tracker = {start: 0}
 
     while frontier:
@@ -175,8 +174,8 @@ def greedy_search(snake, obstacles, food, rows, cols):
             ]
 
             h_value = heuristic(start, goal)
-            g_cost = len(path) - 1  # CHI PHÍ THỰC TẾ - MỖI Ô +1
-            f_cost = h_value  # f(x) = h(x) trong greedy
+            g_cost = 0 # CHI PHÍ THỰC TẾ - MỖI Ô +1
+            f_cost = h_value  # f(x) = h(x) t
 
             return {
                 "found_path": path,
@@ -184,7 +183,7 @@ def greedy_search(snake, obstacles, food, rows, cols):
                 "nodes_expanded": nodes_expanded,
                 "max_frontier_size": max_frontier,
                 "heuristic_value": h_value,
-                "distance_cost": g_cost,  # CHI PHÍ THỰC TẾ
+                "distance_cost": g_cost,  
                 "total_cost": f_cost,
                 "expanded_nodes": expanded_nodes,
                 "time": time.time() - start_time,
@@ -213,7 +212,7 @@ def greedy_search(snake, obstacles, food, rows, cols):
 
     if best_move:
         # Chi phí thực tế cho 1 bước di chuyển
-        g_cost_fallback = 1
+        g_cost_fallback = 0
 
         return {
             "found_path": [list(head), [head[0] + best_move[0], head[1] + best_move[1]]],
@@ -221,7 +220,7 @@ def greedy_search(snake, obstacles, food, rows, cols):
             "nodes_expanded": nodes_expanded,
             "max_frontier_size": max_frontier,
             "heuristic_value": best_score,
-            "distance_cost": g_cost_fallback,  # CHI PHÍ THỰC TẾ = 1
+            "distance_cost": g_cost_fallback,  # CHI PHÍ THỰC TẾ
             "total_cost": best_score,
             "expanded_nodes": expanded_nodes,
             "time": time.time() - start_time,
