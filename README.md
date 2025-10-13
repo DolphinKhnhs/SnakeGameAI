@@ -213,12 +213,98 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
 - **Nhược điểm**: Tốn thời gian khi domain hoặc ràng buộc lớn.
 
 ## Kết quả và đánh giá
-### Nhóm thuật toán Uniformed Search
+### Nhóm thuật toán Uninformed Search
 - **Kết quả**:
 
 <h3 align="center">🐍 BFS</h3>
 <p align="center">
-  <img src="gif/bfs2.gif" alt="BFS demo" width="900" style="border-radius:10px;"/>
+  <img src="gif/bfs.gif" alt="BFS demo" width="900" style="border-radius:10px;"/>
+</p>
+
+<h3 align="center">🐍 DFS</h3>
+<p align="center">
+  <img src="gif/dfs.gif" alt="DFS demo" width="900" style="border-radius:10px;"/>
+</p>
+
+<h3 align="center">🐍 UCS</h3>
+<p align="center">
+  <img src="gif/ucs.gif" alt="UCS demo" width="900" style="border-radius:10px;"/>
+</p>
+
+<h3 align="center">🐍 IDS</h3>
+<p align="center">
+  <img src="gif/ids.gif" alt="IDS demo" width="900" style="border-radius:10px;"/>
+</p>
+
+### Nhóm thuật toán Informed Search
+- **Kết quả**:
+
+<h3 align="center">🐍 A*</h3>
+<p align="center">
+  <img src="gif/a_star.gif" alt="A* demo" width="900" style="border-radius:10px;"/>
+</p>
+
+<h3 align="center">🐍 Greedy</h3>
+<p align="center">
+  <img src="gif/greedy.gif" alt="Greedy demo" width="900" style="border-radius:10px;"/>
+</p>
+
+### Nhóm thuật toán Local Search
+- **Kết quả**: 
+
+<h3 align="center">🐍 Hill Climbing</h3>
+<p align="center">
+  <img src="gif/hill_climbing.gif" alt="Hill demo" width="900" style="border-radius:10px;"/>
+</p>
+
+<h3 align="center">🐍 Simulated Annealing</h3>
+<p align="center">
+  <img src="gif/simulated_annealing.gif" alt="SA demo" width="900" style="border-radius:10px;"/>
+</p>
+
+<h3 align="center">🐍 Genetic Algorithm</h3>
+<p align="center">
+  <img src="gif/.gif" alt="GA demo" width="900" style="border-radius:10px;"/>
+</p>
+
+<h3 align="center">🐍 Beam Search</h3>
+<p align="center">
+  <img src="gif/beam.gif" alt="Beam demo" width="900" style="border-radius:10px;"/>
+</p>
+
+### Nhóm thuật toán complexenv
+
+<h3 align="center">🐍 And-Or Tree Search</h3>
+<p align="center">
+  <img src="gif/and_or_tree.gif" alt="AOT demo" width="900" style="border-radius:10px;"/>
+</p>
+
+<h3 align="center">🐍 Partially Observable Search</h3>
+<p align="center">
+  <img src="gif/partially_observable.gif" alt="POS demo" width="900" style="border-radius:10px;"/>
+</p>
+
+<h3 align="center">🐍 Belief State Search</h3>
+<p align="center">
+  <img src="gif/belief_state.gif" alt="BSS demo" width="900" style="border-radius:10px;"/>
+</p>
+
+### Nhóm thuật toán SCP Search
+- **Kết quả**:
+
+<h3 align="center">🐍 Backtracking</h3>
+<p align="center">
+  <img src="gif/backtracking.gif" alt="Backtracking demo" width="900" style="border-radius:10px;"/>
+</p>
+
+<h3 align="center">🐍 Forward Checking</h3>
+<p align="center">
+  <img src="gif/forward_checking.gif" alt="FC demo" width="900" style="border-radius:10px;"/>
+</p>
+
+<h3 align="center">🐍 AC#</h3>
+<p align="center">
+  <img src="gif/ac3.gif" alt="AC3 demo" width="900" style="border-radius:10px;"/>
 </p>
 
 - **Đánh giá**: Tìm đường ổn định và an toàn. Số node duyệt nhiều nhất nhóm, đường đi tối ưu, rắn di chuyển mượt, tốn nhiều bộ nhớ.
