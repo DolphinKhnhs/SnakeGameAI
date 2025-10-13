@@ -214,7 +214,10 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
 
 ## Kết quả và đánh giá
 ### Kết quả
-![Snake Demo](gif/bfs.gif)
+<h3 align="center">🐍 Snake AI – BFS Demo</h3>
+<p align="center">
+  <img src="gif/bfs.gif" alt="BFS demo" width="700" style="border-radius:10px;"/>
+</p>
 
 ## Hướng dẫn sử dụng
 ### Yêu cầu
