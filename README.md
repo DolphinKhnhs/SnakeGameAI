@@ -214,9 +214,9 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
 
 ## Kết quả và đánh giá
 ### Kết quả
-<h3 align="center">🐍 Snake AI – BFS Demo</h3>
+<h3 align="center">🐍 BFS</h3>
 <p align="center">
-  <img src="gif/bfs.gif" alt="BFS demo" width="700" style="border-radius:10px;"/>
+  <img src="gif/bfs.gif" alt="BFS demo" width="900" style="border-radius:10px;"/>
 </p>
 
 ## Hướng dẫn sử dụng
