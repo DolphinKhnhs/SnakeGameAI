@@ -209,15 +209,19 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
   - Không gian: O(c)
   - c: số lượng cung (constraints) trong bài toán CSP.
   - d: số lượng giá trị tối đa trong domain của mỗi biến
-- **Ưu điểm:**: Phát hiện xung đột sớm. Giảm không gian tìm kiếm.
+- **Ưu điểm**: Phát hiện xung đột sớm. Giảm không gian tìm kiếm.
 - **Nhược điểm**: Tốn thời gian khi domain hoặc ràng buộc lớn.
 
 ## Kết quả và đánh giá
-### Kết quả
+### Nhóm thuật toán Uniformed Search
+-**Kết quả**:
+
 <h3 align="center">🐍 BFS</h3>
 <p align="center">
   <img src="gif/bfs2.gif" alt="BFS demo" width="900" style="border-radius:10px;"/>
 </p>
+
+- **Đánh giá**: Tìm đường nhanh, ổn định và chính xác nhất. Số node duyệt nhiều nhất nhóm, đường đi tối ưu, rắn di chuyển mượt và an toàn, tốn nhiều bộ nhớ.
 
 ## Hướng dẫn sử dụng
 ### Yêu cầu
