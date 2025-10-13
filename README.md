@@ -9,7 +9,44 @@
   - Ninh Anh Tú       23110168
   - Trần Hữu Lộc      23110123
   - Nguyễn Khánh      23110112
-## Mục lục
+## 📑 Mục lục
+- [Tổng quan về Snake Game](#tổng-quan-về-snake-game)
+  - [Lịch sử và nguồn gốc](#lịch-sử-và-nguồn-gốc)
+  - [Quy tắc chơi và cách chơi](#quy-tắc-chơi-và-cách-chơi)
+- [Tổng quan về dự án](#tổng-quan-về-dự-án)
+  - [Mục tiêu](#mục-tiêu)
+  - [Phạm vi](#phạm-vi)
+- [Các thuật toán được sử dụng](#các-thuật-toán-được-sử-dụng)
+  - [1. BFS (Breadth-First Search)](#1-bfs-breadth-first-search)
+  - [2. DFS (Depth-First Search)](#2-thuật-toán-dfs-depth-first-search)
+  - [3. UCS (Uniform Cost Search)](#3-thuật-toán-ucs-uniform-cost-search)
+  - [4. IDS (Iterative Deepening Search)](#4-thuật-toán-ids-iterative-deepening-search)
+  - [5. A* (A-star Search)](#5-thuật-toán-a-a-star-search)
+  - [6. Greedy Best-First Search](#6-thuật-toán-greedy-greedy-best-first-search)
+  - [7. Hill Climbing](#7-thuật-toán-hill-climbing)
+  - [8. Simulated Annealing](#8-thuật-toán-simulated-annealing)
+  - [9. Genetic Algorithm](#9-thuật-toán-genetic-algorithm-ga)
+  - [10. Beam Search](#10-thuật-toán-beam-search)
+  - [11. AND-OR Tree Search](#11-thuật-toán-and-or-search)
+  - [12. Belief State Search](#12-thuật-toán-belief-state-search)
+  - [13. Partially Observable Search](#13-thuật-toán-partially-observable-search)
+  - [14. Backtracking](#14-thuật-toán-backtracking)
+  - [15. Forward Checking](#15-thuật-toán-forward-checking)
+  - [16. AC3](#16-thuật-toán-ac3)
+- [Kết quả và đánh giá](#kết-quả-và-đánh-giá)
+  - [Nhóm Uninformed Search](#nhóm-thuật-toán-uninformed-search)
+  - [Nhóm Informed Search](#nhóm-thuật-toán-informed-search)
+  - [Nhóm Local Search](#nhóm-thuật-toán-local-search)
+  - [Nhóm Complex Environment](#nhóm-thuật-toán-complex-environment)
+  - [Nhóm CSP Search](#nhóm-thuật-toán-csp-search)
+- [Hướng dẫn sử dụng](#hướng-dẫn-sử-dụng)
+  - [Yêu cầu](#yêu-cầu)
+  - [Hướng dẫn chạy](#hướng-dẫn-chạy)
+  - [Cấu trúc đồ án](#cấu-trúc-đồ-án)
+  - [Cách sử dụng chương trình](#hướng-dẫn-sử-dụng-chương-trình)
+- [Hướng phát triển](#hướng-phát-triển)
+- [Tài liệu tham khảo](#tài-liệu-tham-kkhảo)
+- [Nguồn hình ảnh](#nguồn-hình-ảnh)
 
 ## Tổng quan về Snake Game
 ### Lịch sử và nguồn gốc
