@@ -1,3 +1,9 @@
+<p align="left">
+  <img src="gif/logoUTE2.gif" alt="Logo Trường" width="120" />
+</p>
+
+<h1 align="center">🐍 Snake Game With AI</h1>
+
 # ĐỒ ÁN MÔN HỌC: TRÍ TUỆ NHÂN TẠO
 # Ứng dụng các thuật toán tìm kiếm trong trí tuệ nhân tạo vào Snake Game
 ## Thông tin đồ án
@@ -214,14 +220,14 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
 
 ## Kết quả và đánh giá
 ### Nhóm thuật toán Uniformed Search
--**Kết quả**:
+- **Kết quả**:
 
 <h3 align="center">🐍 BFS</h3>
 <p align="center">
   <img src="gif/bfs2.gif" alt="BFS demo" width="900" style="border-radius:10px;"/>
 </p>
 
-- **Đánh giá**: Tìm đường nhanh, ổn định và chính xác nhất. Số node duyệt nhiều nhất nhóm, đường đi tối ưu, rắn di chuyển mượt và an toàn, tốn nhiều bộ nhớ.
+- **Đánh giá**: Tìm đường ổn định và an toàn. Số node duyệt nhiều nhất nhóm, đường đi tối ưu, rắn di chuyển mượt, tốn nhiều bộ nhớ.
 
 ## Hướng dẫn sử dụng
 ### Yêu cầu

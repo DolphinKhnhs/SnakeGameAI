@@ -355,8 +355,8 @@ class SnakeGame:
                              font=("Arial", 10, "bold"), command=self.quit_game)
         btn_run = tk.Button(self.frame_controls, text="🚀 Run", bg="#FF9800", fg="white",
                             font=("Arial", 10, "bold"), command=self.start_game)
-        btn_stats = tk.Button(self.frame_controls, text="📊 Statistics", bg="#9C27B0", fg="white",
-                              font=("Arial", 10, "bold"))
+        # btn_stats = tk.Button(self.frame_controls, text="📊 Statistics", bg="#9C27B0", fg="white",
+        #                       font=("Arial", 10, "bold"))
 
         for i in range(3):
             self.frame_controls.grid_columnconfigure(i, weight=1)
@@ -368,7 +368,7 @@ class SnakeGame:
         btn_quit.grid(row=4, column=2, padx=10, pady=5, sticky="nsew")
 
         btn_run.grid(row=5, column=0, padx=10, pady=5, sticky="nsew")
-        btn_stats.grid(row=5, column=1, padx=10, pady=5, sticky="nsew")
+        #btn_stats.grid(row=5, column=1, padx=10, pady=5, sticky="nsew")
 
     def set_visualization_speed(self, speed):
         self.visualization_speed = int(speed)
