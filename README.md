@@ -1,9 +1,3 @@
-<p align="left">
-  <img src="gif/logoUTE2.gif" alt="Logo Trường" width="120" />
-</p>
-
-<h1 align="center">🐍 Snake Game With AI</h1>
-
 # ĐỒ ÁN MÔN HỌC: TRÍ TUỆ NHÂN TẠO
 # Ứng dụng các thuật toán tìm kiếm trong trí tuệ nhân tạo vào Snake Game
 ## Thông tin đồ án
