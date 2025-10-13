@@ -221,22 +221,63 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
   <img src="gif/bfs.gif" alt="BFS demo" width="900" style="border-radius:10px;"/>
 </p>
 
+- **Đánh giá**:
+    - Ưu điểm:
+        - Thuật toán tìm đường tốt trong môi trường dynamic 
+        - Chạy ổn định
+    - Nhược điểm:
+        - Tốc độ tìm đường chậm 
+        - Số node duyệt lớn nhất trong nhóm uninformed search -> tốn bộ nhớ
+
+- **Kết quả**:
+
 <h3 align="center">🐍 DFS</h3>
 <p align="center">
   <img src="gif/dfs.gif" alt="DFS demo" width="900" style="border-radius:10px;"/>
 </p>
+
+- **Đánh giá**: 
+    - Ưu điểm: 
+        - Thuật toán tìm đường tốt vì đã được cải tiến ưu tiên mở rộng hướng đi đến food
+        - Thời gian tìm đường đi trong môi trường dynamic nhanh nhất trong nhóm uninformed search
+        - Số nodes duyệt ít -> Không gây tốn bộ nhớ
+        - Chạy ổn định
+    - Nhược điểm:
+        - Đường đi tới food chưa được tối ưu do phải duyệt hết nhánh (stack) nên đường đi có lúc quằng quèo
+
+- **Kết quả**:
 
 <h3 align="center">🐍 UCS</h3>
 <p align="center">
   <img src="gif/ucs.gif" alt="UCS demo" width="900" style="border-radius:10px;"/>
 </p>
 
+- **Đánh giá**:
+    - Ưu điểm:
+        - Thuật toán tìm đường tốt do sử dụng hàng đợi ưu tiên
+        - Đường đi tới food được tối ưu ngắn
+        - Chạy ổn định
+    - Nhược điểm:
+        - Thời gian tìm đường chậm
+        - Duyệt nhiều nodes -> tốn bộ nhớ
+
+- **Kết quả**:
+
 <h3 align="center">🐍 IDS</h3>
 <p align="center">
   <img src="gif/ids.gif" alt="IDS demo" width="900" style="border-radius:10px;"/>
 </p>
 
+- **Đánh giá**:
+    - Ưu điểm: 
+        - Chạy ổn định trong môi trường nhiều vật cản
+        - nodes duyệt ít -> ít tốn bộ nhớ
+    - Nhược điểm:
+        - Lặp DFS nhiều lần -> tốn quá nhiều thời gian
+        - Đường đi không được tối ưu
+
 ### Nhóm thuật toán Informed Search
+
 - **Kết quả**:
 
 <h3 align="center">🐍 A*</h3>
@@ -244,10 +285,28 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
   <img src="gif/a_star.gif" alt="A* demo" width="900" style="border-radius:10px;"/>
 </p>
 
+- **Đánh giá**:
+    - Ưu điểm:
+        - Thuật toán tìm đường nhanh do sử dụng hàm tính chi phí f(x) = h(x) + g(x)
+        - Đường đi được tối ưu ngắn
+        - Chạy ổn định trong môi trường nhiều vật cản
+        - Số nodes duyệt tùy theo môi trường và vị trí food -> đảm bảo rắn sinh tồn lâu
+
+- **Kết quả**:
+
 <h3 align="center">🐍 Greedy</h3>
 <p align="center">
   <img src="gif/greedy.gif" alt="Greedy demo" width="900" style="border-radius:10px;"/>
 </p>
+
+- **Đánh giá**:
+    - Ưu điểm:
+        - Thuật toán tìm đường đi ngắn nhất do sử dụng hàm f(x) = h(x)
+        - Số nodes duyệt ít -> ít tốn bộ nhớ
+        - Thời gian tìm đường cực nhanh
+    - Nhược điểm:
+        - Dễ đi sai hướng dẫn đến mắc kẹt vật cản
+        - Không đảm bảo an toàn do ưu tiên đường đi ngắn nhất
 
 ### Nhóm thuật toán Local Search
 - **Kết quả**: 
@@ -257,37 +316,104 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
   <img src="gif/hill_climbing.gif" alt="Hill demo" width="900" style="border-radius:10px;"/>
 </p>
 
+- **Đánh giá**:
+    - Ưu điểm: 
+        - Số nodes duyệt không quá lớn
+        - Thời gian duyệt cực nhanh
+    - Nhược điểm: 
+        - Dễ mắc kẹt tại cực trị địa phương
+        - Không ổn định
+
+- **Kết quả**:
+
 <h3 align="center">🐍 Simulated Annealing</h3>
 <p align="center">
   <img src="gif/simulated_annealing.gif" alt="SA demo" width="900" style="border-radius:10px;"/>
 </p>
+
+- **Đánh giá**:
+    - Ưu điểm: 
+        - Giảm năng lượng dần -> tránh mắc kẹt local optima
+        - Đường đi được tối ưu
+    - Nhược điểm:
+        - Tốn rất nhiều thời gian để đánh giá trạng thái cho mỗi bước tìm kiếm -> game lag
+        - Không tối ưu trong môi trường dynamic
+
+- **Kết quả**:
 
 <h3 align="center">🐍 Genetic Algorithm</h3>
 <p align="center">
   <img src="gif/gene.gif" alt="GA demo" width="900" style="border-radius:10px;"/>
 </p>
 
+- **Đánh giá**:
+    - Ưu điểm: 
+        - Đảm bảo tìm được đường đi trong môi trường nhiều vật cản
+    - Nhược điểm:
+        - Thuật toán sử dụng quá nhiều phép tính (Đánh giá fitness, selection, crossover, mutation,...) -> tốn nhiều thới gian tìm kiếm trong môi trường dynamic
+        - Đối với những thức ăn ở xa -> Quần thể tìm kiếm lớn ->Tốn quá nhiều bộ nhớ -> Gây lag game
+        - Không tối ưu trong môi trường dynamic
+
+- **Kết quả**:
+
 <h3 align="center">🐍 Beam Search</h3>
 <p align="center">
   <img src="gif/beam.gif" alt="Beam demo" width="900" style="border-radius:10px;"/>
 </p>
 
+- **Đánh giá**:
+    - Ưu điểm:
+        - Tốc độ tìm đường nhanh
+        - Số nodes duyệt ít do cắt giảm nodes theo beam with -> ít tốn bộ nhớ
+        - Đảm bảo tìm thấy đường đi
+    - Nhược điểm:
+        - Dễ bỏ lỡ đường đi tối ưu do cắt giảm nodes
+        - Dễ mắc kẹt tại cực trị cục bộ do beam search không quay lại đường đi đã cắt bỏ -> Game over 
+
 ### Nhóm thuật toán Complex Environment
+- **Kết quả**:
 
 <h3 align="center">🐍 And-Or Tree Search</h3>
 <p align="center">
   <img src="gif/and_or_tree.gif" alt="AOT demo" width="900" style="border-radius:10px;"/>
 </p>
 
+- **Đánh giá**:
+    - Ưu điểm:
+        - Đảm bảo tìm được đường đi do được cải tiến tìm đường
+    - Nhược điểm:
+        - Duyệt toàn cây AND-OR -> Số nodes duyệt lớn -> tốn quá nhiều bộ nhớ -> Game lag
+        - Tốn nhiều thời gian tìm đường 
+        - Không tối ưu trong mối trường dynamic
+
+- **Kết quả**:
+
 <h3 align="center">🐍 Partially Observable Search</h3>
 <p align="center">
   <img src="gif/partially_observable.gif" alt="POS demo" width="900" style="border-radius:10px;"/>
 </p>
 
+- **Đánh giá**:
+    - Ưu điểm:
+        - Đảm bảo an toàn khi tìm thấy đường -> Không dẫn đến kẹt vật cản
+    - Nhược điểm:
+        - Thiếu thông tin -> Phải lập kế hoạch liên tục -> Tốn nhiều thời gian tìm kiếm
+        - Tầm nhiền quá ngắn (nếu tầm nhìn rộng sẽ gây tốn quá nhiều bộ nhớ -> Game lag) -> Chọn hướng đi không an toàn
+        - Không đảm bảo đường đi tối ưu
+
+- **Kết quả**:
+
 <h3 align="center">🐍 Belief State Search</h3>
 <p align="center">
   <img src="gif/belief_state.gif" alt="BSS demo" width="900" style="border-radius:10px;"/>
 </p>
+
+- **Đánh giá**:
+    - Ưu điểm:
+        - Đảm bảo tìm thấy đường đi trong môi trường quan sát không đầy đủ
+    - Nhược điểm:
+        - Trong môi trường dynamic sẽ gây bùng nổ trạng thái belief state -> Game lag
+        - Không tối ưu cho SnakeGameAI
 
 ### Nhóm thuật toán CSP Search
 - **Kết quả**:
@@ -297,17 +423,43 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
   <img src="gif/backtracking.gif" alt="Backtracking demo" width="900" style="border-radius:10px;"/>
 </p>
 
+- **Đánh giá**:
+    - Ưu điểm:
+        - Số nodes duyệt ít -> Ít tốn bộ nhớ
+    - Nhược điểm:
+        - Mỗi lần thay đổi trạng thái là một lần duyệt lại từ đầu -> Tốn quá nhiều thời gian tìm kiếm
+        - Dễ bị mắc kẹt trong vòng lặp
+        - Đường đi không tối ưu
+
+- **Kết quả**:
+
 <h3 align="center">🐍 Forward Checking</h3>
 <p align="center">
   <img src="gif/forward_checking.gif" alt="FC demo" width="900" style="border-radius:10px;"/>
 </p>
+
+- **Đánh giá**:
+    - Ưu điểm:
+        - Sớm phát hiện ngõ cụt
+        - Duyệt ít nodes -> Ít tốn bộ nhớ
+    - Nhược điểm:
+        - Không đảm bảo phát hiện hết xung đột
+        - Chi phí duy trì miền giá trị cao -> Tốn thời gian tìm kiếm mỗi lần reset
+
+- **Kết quả**:
 
 <h3 align="center">🐍 AC#</h3>
 <p align="center">
   <img src="gif/ac3.gif" alt="AC3 demo" width="900" style="border-radius:10px;"/>
 </p>
 
-- **Đánh giá**: Tìm đường ổn định và an toàn. Số node duyệt nhiều nhất nhóm, đường đi tối ưu, rắn di chuyển mượt, tốn nhiều bộ nhớ.
+- **Đánh giá**:
+    - Ưu điểm:
+        - Số nodes duyệt ít -> Ít tốn bộ nhớ
+        - Không cần tìm kiếm toàn cục
+    - Nhược điểm:
+        - Thuật toán tìm kiếm mọi miền (x,y) -> Thời gian tìm kiếm lớn
+        - Không đảm bảo đường đi tối ưu 
 
 ## Hướng dẫn sử dụng
 ### Yêu cầu
