@@ -272,7 +272,7 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
   <img src="gif/beam.gif" alt="Beam demo" width="900" style="border-radius:10px;"/>
 </p>
 
-### Nhóm thuật toán complexenv
+### Nhóm thuật toán Complex Environment
 
 <h3 align="center">🐍 And-Or Tree Search</h3>
 <p align="center">
@@ -289,7 +289,7 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
   <img src="gif/belief_state.gif" alt="BSS demo" width="900" style="border-radius:10px;"/>
 </p>
 
-### Nhóm thuật toán SCP Search
+### Nhóm thuật toán CSP Search
 - **Kết quả**:
 
 <h3 align="center">🐍 Backtracking</h3>
