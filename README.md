@@ -216,7 +216,7 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
 ### Kết quả
 <h3 align="center">🐍 BFS</h3>
 <p align="center">
-  <img src="gif/bfs.gif" alt="BFS demo" width="900" style="border-radius:10px;"/>
+  <img src="gif/bfs2.gif" alt="BFS demo" width="900" style="border-radius:10px;"/>
 </p>
 
 ## Hướng dẫn sử dụng
@@ -246,7 +246,7 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
 ### Hướng dẫn sử dụng chương trình
 - **B1: Khởi động**
   - Chọn file ``snake_ui.py``
-  - Chuong trình sẽ hiển thị giao diện
+  - Chương trình sẽ hiển thị giao diện
 - **B2: Chọn thuật toán trong Algorithms**
 - **B3: Chọn độ Khó**
 - **B4: Chọn run để chạy thuật toán, pause/resume để dùng và chạy thuật toán, restart để chạy lại từ đầu, quit để thoát, các thanh điều chỉnh tốc độ chỉ hoạt động khi giao diện thực hiện đúng quá trình (rắn đang chạy có thể chỉnh tốc độ, hiển thị tìm kiếm thì có thể điều chỉnh tốc độ**
