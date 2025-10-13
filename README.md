@@ -264,7 +264,7 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
 
 <h3 align="center">🐍 Genetic Algorithm</h3>
 <p align="center">
-  <img src="gif/.gif" alt="GA demo" width="900" style="border-radius:10px;"/>
+  <img src="gif/gene.gif" alt="GA demo" width="900" style="border-radius:10px;"/>
 </p>
 
 <h3 align="center">🐍 Beam Search</h3>
