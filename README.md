@@ -512,7 +512,9 @@ Khi một lựa chọn không dẫn đến kết quả hợp lệ, thuật toán
   - Clone repository hoặc tải file ZIP từ repository
   - Giải nén
 3. Cài đặt thư viện:
-  - 
+```
+pip install pillow
+```
 ### Cấu trúc đồ án
 - ``sprite``: Module chứa hình ảnh game
 - ``complexenv.py``: Chứ thuật toán AND-OR Tree Search, Partially Observable Search, Belief State Search
